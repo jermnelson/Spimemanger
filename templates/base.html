@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <link rel="stylesheet" href="/styles/default.css" />
+ <title>{% block title %}Spimemanger Base Template{% endblock %}</title>
+</head>
+<body>
+{% block main_title %}<h2>SpimeManger - The Mispelling of a connected life</h2>{% endblock %}
+ <div id="left_sidebar">
+  {% block left_sidebar %}
+  <h3>About Me</h3>
+  <p>
+  My name is Jeremy Nelson and I am a librarian living in Gunnison, Colorado. 
+  I enjoy fishing, hunting, mountain biking, and snowboarding here in Gunnison.
+  I also teach and practice Aikido, a modern Japanese martial art similar to Judo and
+  JuJutju.
+  </p>
+  <h3>Social Networks</h3>
+  {% if social_networks %}
+  {% for site in social_networks %}
+   <ul>
+    <li><a href="{{ site.base_url }}">{{ site.name }}</a> - <a href="{{ site.user_url }}">{{ site.user_name }}</a></li>
+   </ul>
+  {% endfor %}
+  {% endif %}
+  {% endblock %}
+ </div>
+ 
+<div id="content">
+ {% block content %}{% endblock %}
+ </div>
+</body>
+</html>

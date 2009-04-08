@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - Jeremy Nelson's Web Hub{% endblock %}
+
+{% block content %}
+<p>
+Spimemanger is Jeremy Nelson's personal web playground for testing ideas using 
+<a href="http://code.google.com/appengine/">Google App Engine</a> as the 
+underlying web framework. Jeremy Nelson is the Electronic Resources/Government 
+Documents Librarian at <a href="http://www.western.edu/lib/">Leslie J. Savage 
+Library</a> at <a href="http://www.western.edu/">Western State College</a> in 
+Gunnison, Colorado.
+</p>
+{% if projects %}
+<h3>Projects</h3>
+<ul>
+{% for project in projects %}
+ <li><a href="{{ project.url }}">{{ project.name }}</a> STATUS: {{ project.status }}
+  Start date: {{ project.start }} End date: {{ project.end }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote, pre, form, fieldset, table, th, td { margin: 0; padding: 0; }  
+
+body {font-family: Verdana, sans-serif;
+     font-size: 90%}
+
+h2 { padding: 5px 5px 5px 5px; }
+
+ul { 
+  padding: 5px 5px 5px 5px;
+  margin: 10px;}
+  
+
+#left_sidebar{
+  border: thin solid rgb(0,0,0);
+  background-color: rgb(243,231,186);
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 250px;
+  padding: 5px 5px 5px 5px;}
+  
+#content{
+  position: absolute;
+  left: 290px;
+  top: 40px;
+  padding: 5px 5px 5px 5px;}
