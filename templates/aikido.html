@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - Jeremy Nelson's Aikido Applications{% endblock %}
+
+{% block main_title %}<h2>Spimemanger - Jeremy Nelson's Aikido Life</h2>{% endblock %}
+{% block content %}
+
+<div id="aikido_log">
+<h3>Aikido Log</h3>
+<dl>
+{% for entry in aikido_log %}
+  <dt>{{ entry.date }} at {{ entry.dojo.name }}</dt>
+  <dd>Instructors: {% for sensei in entry.get_instructors %}{{ sensei.full_name }}{% endfor %}</dd>
+{% endfor %}
+</dl>
+</div>
+{% endblock %}
