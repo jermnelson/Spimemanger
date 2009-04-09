@@ -37,8 +37,18 @@ class HubPage(webapp.RequestHandler):
                             'templates/hub.html')
         self.response.out.write(template.render(path,template_values))
 
+class AikidoPage(webapp.RequestHandler):
+
+    def get(self):
+        aikido_log = base_models.AikidoLog.all()
+        template_values = {'aikido_log':aikido_log}
+        path = os.path.join(os.path.dirname(__file__),
+                            'templates/aikido.html')
+        self.response.out.write(template.render(path,template_values))
+        
 application = webapp.WSGIApplication([
-    ('/',HubPage)], debug=True)
+    ('/',HubPage),
+    ('/aikido/',AikidoPage)], debug=True)
 
 def main():
     wsgiref.handlers.CGIHandler().run(application)

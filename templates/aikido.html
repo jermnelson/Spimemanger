@@ -9,8 +9,8 @@
 <h3>Aikido Log</h3>
 <dl>
 {% for entry in aikido_log %}
-  <dt>{{ entry.date }} at {{ entry.dojo.name }}</dt>
-  <dd>Instructors: {% for sensei in entry.get_instructors %}{{ sensei.full_name }}{% endfor %}</dd>
+  <dt>{{ entry.class_datetime }} at {{ entry.dojo.name }}</dt>
+  <dd>Instructors: {% for sensei in entry.get_instructors %}{{ sensei }}{% endfor %}</dd>
 {% endfor %}
 </dl>
 </div>

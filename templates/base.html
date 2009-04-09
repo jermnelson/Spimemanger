@@ -13,11 +13,11 @@
   <p>
   My name is Jeremy Nelson and I am a librarian living in Gunnison, Colorado. 
   I enjoy fishing, hunting, mountain biking, and snowboarding here in Gunnison.
-  I also teach and practice Aikido, a modern Japanese martial art similar to Judo and
+  I also teach and practice <a href="/aikido/">Aikido</a>, a modern Japanese martial art similar to Judo and
   JuJutju.
   </p>
-  <h3>Social Networks</h3>
   {% if social_networks %}
+  <h3>Social Networks</h3>
   {% for site in social_networks %}
    <ul>
     <li><a href="{{ site.base_url }}">{{ site.name }}</a> - <a href="{{ site.user_url }}">{{ site.user_name }}</a></li>
@@ -25,6 +25,14 @@
   {% endfor %}
   {% endif %}
   {% endblock %}
+ </div>
+ 
+ <div id="spimemanger_info">
+ {% block spimemanger_info %}
+ <h3>About Spimemanger</h3>
+ Spimemanger source code is hosted at <a href="http://github.com/jermnelson/spimemanger/tree/master">git-hub</a> 
+ and is hosted publically at <a href="http://spimemanger.appspot.com/">http://spimemanger.appspot.com/</a>.
+ {% endblock %}
  </div>
  
 <div id="content">

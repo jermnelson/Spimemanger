@@ -24,3 +24,13 @@ ul {
   left: 290px;
   top: 40px;
   padding: 5px 5px 5px 5px;}
+  
+#spimemanger_info{
+  position: absolute;
+  border: thin solid rgb(0,0,0);
+  color: rgb(255,255,255);
+  background-color: rgb(128,0,0);
+  left: 20px;
+  width: 250px;
+  top: 300px;
+  padding: 5px 5px 5px 5px;}
