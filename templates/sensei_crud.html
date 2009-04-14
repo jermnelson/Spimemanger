@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - Jeremy Nelson's Aikido Applications {{ mode|title }} Sensei{% endblock %}
+
+{% block main_title %}<h2>Spimemanger - {{ mode|title }} Sensei</h2>{% endblock %}
+{% block content %}
+
+<div id="aikido_log">
+<form action="/aikido/sensei/save" method="POST">
+<label>Title:</label><input type="text" name="title" id="title" size="20" value="Sensei" /><br />
+<label>First Name:</label><input type="text" name="fir_name" id="fir_addr" size="45" value="{% ifnotequal mode 'add' %}{{ sensei.first }}{% endifnotequal %}" />
+<br />
+<label>Middle Name:</label><input type="text" name="mid_name" id="mid_addr" size="45" value="{% ifnotequal mode 'add' %}{{ sensei.middle }}{% endifnotequal %}" />
+<br />
+<label>Last Name:</label><input type="text" name="las_name" id="las_addr" size="45" value="{% ifnotequal mode 'add' %}{{ sensei.last }}{% endifnotequal %}" />
+<br />
+<label>Rank:</label><input type="text" name="rank" id="rank" value="{{ sensei.rank }}" />
+<br />
+<label>Dojo(s):</label>
+<select id="sensei_dojos" name="sensei_dojos" multiple="multiple" rows="3">
+{% for dojo in dojos %}
+<option value="{{ dojo.key }}">{{ dojo.name }}</option>
+{% endfor %}
+</select>
+<label>Affiliation(s):</label>
+<select id="sensei_affiliations" name="sensei_affiliations" multiple="multiple" rows="3">
+{% for org in aikido_orgs %}
+<option value="{{ org.key }}">{{ org.name }}</option>
+{% endfor %}
+</select>
+<br />
+<input type="submit" value="{{ mode|title }} Instructor" />
+</form>
+</div>
+{% endblock %}

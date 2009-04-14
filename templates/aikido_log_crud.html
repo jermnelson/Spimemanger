@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - Jeremy Nelson's Aikido Applications {{ mode|title }} Log{% endblock %}
+
+{% block main_title %}<h2>Spimemanger - {{ mode|title }} Log</h2>{% endblock %}
+{% block content %}
+{% ifequal mode 'add' %}
+<form action="/aikido/log/save" method="POST">
+<label>Class date and start time:</label>
+<input type="text" name="class_datetime" id="class_datetime" size="40" />
+<br />
+<label>Dojo:</label><br/>
+<select name="dojos" id="dojos">
+{% for dojo in all_dojos %}
+<option value="{{ dojo.key }}">{{ dojo.name }}</option>
+{% endfor %}
+</select>
+<br />
+<label>Location (if different from dojo):</label><br />
+<textarea name="location" id="location" cols="30" rows="3">
+</textarea>
+<br />
+<table>
+<tr>
+ <td>All Techniques:</td>
+ <td></td>
+ <td>Class Techniques:</td>
+</tr>
+<tr>
+ <td>
+ <select id="all_techniques" name="all_techniques" multiple="multiple" rows="5">
+ {% for technique in all_techniques %}
+ <option value="{{ technique.key }}">{{ technique.attack.english_translation }} {% ifnotequal technique.end_location 'none' %}{{ technique.end_location }}{% endifnotequal %}</option>
+ {% endfor %}
+ </td>
+ <td valign="center"><input type="button" value="Add technique" onclick="AddTechniqueToLog('all_techniques','class_techniques')" />
+ <input type="button" value="Remove technique" /></td>
+ <td>
+ <select id="class_techniques" name="class_techniques" multiple="multiple" rows="5">
+ </select>
+ </td>
+</tr>
+<tr>
+ <td colspan="3"><a href="/aikido/techniques/add">Add technique</a></td>
+</tr>
+</table>
+</form>
+{% endifequal %}
+{% endblock %}

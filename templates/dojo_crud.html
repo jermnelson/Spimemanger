@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - Jeremy Nelson's Aikido Applications {{ mode|title }} Dojo{% endblock %}
+
+{% block main_title %}<h2>Spimemanger - {{ mode|title }} Dojo</h2>{% endblock %}
+{% block content %}
+
+<div id="aikido_log">
+<form action="/aikido/dojos/save" method="POST">
+<input type="hidden" id="mode" name="mode" value="{{ mode }}" />
+<label>Name:</label><input type="text" name="dojo_name" id="dojo_name" size="45" value="{% ifnotequal mode 'add' %}{{ dojo.name }}{% endifnotequal %}" />
+<br />
+<label>Location:</label>
+<textarea name="dojo_addr" id="dojo_addr" cols="30" rows="3">{% ifnotequal mode 'add' %}{{ dojo.location }}{% endifnotequal %}
+</textarea>
+<br />
+<label>Website (URL):</label>
+<input type="text" name="url" id="url" value="{% ifnotequal mode 'add' %}{{ dojo.url }}{% endifnotequal %}" size="50" />
+<br />
+<label>Instructors:</label>
+<table>
+<tr>
+<td>All Instructors:</td>
+<td></td>
+<td>Dojo Instructors:</td>
+</tr>
+<tr>
+<td valign="top">
+<select name="all_sensei" id="all_sensei" multiple="multiple" rows="5">
+{% for sensei in instructors %}
+<option value="{{ sense.key }}">{{ sensei.full_name }}</option>
+{% endfor %}
+</select>
+</td>
+<td valign="center">
+<input type="button" value="Add ->" onclick="MoveInstructor('all_sensei','dojo_sensei');" />
+<input type="button" value="Remove" onclick="RemoveInstructor('dojo_sensei');" />
+</td>
+<td valign="top">
+<select name="dojo_sensei" id="dojo_sensei" multiple="multiple" rows="5">
+</td>
+</tr>
+<tr>
+<td colspan="3">Sensei not present? <a href="../sensei/add">Add Instructor</a></td>
+</tr>
+</table>
+<label>Affiliation(s):</label>
+<select id="affiliations" name="affiliations" multiple="multiple" rows="3">
+{% for org in aikido_orgs %}
+<option value="{{ org.key }}">{{ org.name }}</option>
+{% endfor %}
+</select>
+<br />
+<input type="checkbox" id="is_aikido_org" name="is_aikido_org" />Affiliation Organization?
+<br />
+<label>Style:</label>
+<select id="style" name="style">
+<option value="none">None</option>
+{% for style in aikido_styles %}
+<option value="{{ style }}">{{ style|title }}</option>
+{% endfor %}
+</select>
+<br />
+<input type="submit" value="{{ mode|title }} Dojo" />
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Spimemanger - {{ mode|title }} Aikido Technique{% endblock %}
+
+{% block main_title %}<h2>Spimemanger - {{ mode|title }} Aikido Technique</h2>{% endblock %}
+
+{% block content %}
+<form action="/aikido/techniques/save" method="POST">
+<input type="hidden" name="mode" id="mode" value="{{ mode }}" />
+<label>Attack:</label>
+<select id="attack" name="attack">
+ <option value="none">None</option>
+ {% for attack in all_attacks %}
+ <option value="{{ attack.key }}">{{ attack.english_translation }}</option>
+ {% endfor %}
+</select>
+<br />
+<label>English Translation:</label>
+<input type="text" name="eng_name" id="eng_name" size="50" />
+<br />
+<label>Japanese Kanja:</label>
+<input type="text" name="jap_name" id="jap_name" size="20" />
+<br />
+<label>Type:</label>
+<select id="type_of" name="type_of">
+{% for a_type in technique_types %}
+<option value="{{ a_type }}">{{ a_type|title }}</option>
+{% endfor %}
+</select>
+<br />
+<label>Starting Position</label>
+<select id="start_location" name="start_location">
+{% for position in start_positions %}
+<option value="{{ position }}">{{ position|title }}</option>
+{% endfor %}
+</select>
+<label>Ending Position:</label>
+<select id="end_location" name="end_location">
+{% for position in end_positions %}
+ <option value="{{ position }}">{{ position|title }}</option>
+{% endfor %}
+</select>
+<br />
+<label>Variation Of:</label>
+<select id="variation" name="variation">
+<option value="none">None</option>
+{% for technique in all_techniques %}
+<option value="{{ technique.key }}">{{ technique.english_translation }}</option>
+{% endfor %}
+</select>
+<br />
+<label>Comments:</label>
+<textarea name="comment" id="comment" cols="40" rows="5"></textarea>
+<br />
+<input type="submit" value="{{ mode|title }} Technique" />
+</form>
+{% endblock %}
