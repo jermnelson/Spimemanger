@@ -35,48 +35,6 @@ class Dojo(Base):
     name = db.StringProperty(required=True)
     location = db.PostalAddressProperty()
     instructors = db.ListProperty(db.Key)
-
-class AikidoLog(Base):
-    ''' Tracks Aikido Practice '''
-    class_datetime = db.DateTimeProperty(required=True)
-    comments = db.ListProperty(db.Key)
-    dojo = db.ReferenceProperty(Dojo)
-    instructors = db.ListProperty(db.Key)
-    location = db.PostalAddressProperty()
-    participants = db.ListProperty(db.Key)
-    techniques = db.ListProperty(db.Key)
-    total_minutes = db.IntegerProperty()
-
-    def get_instructors(self):
-        instructors = list()
-        for key in self.instructors:
-            person = db.get(key)
-            instructors.append(person.full_name)
-        instructors.sort()
-        return instructors
-
-class AikidoTechnique(Base):
-    ''' Listing of Aikido Techniques '''
-    attack = db.SelfReferenceProperty(collection_name="attack_technique")
-    comments = db.ListProperty(db.Key)
-    english_translation = db.StringProperty(required=True)
-    end_location = db.StringProperty(required=False,
-                                     choices=(['omote',
-                                               'ura',
-                                               'none']))
-    japanese = db.StringProperty()
-    sources = db.ListProperty(db.Key)
-    type_of = db.StringProperty(required=True,
-                                choices=(['drop',
-                                          'grab',
-                                          'exercise',
-                                          'henkawaza',
-                                          'kick',
-                                          'kokyuho',
-                                          'pin',
-                                          'strike',
-                                          'throw']))
-    variation_of = db.SelfReferenceProperty()
     
 class Comment(Base):
     '''Stores notes about other data models in app'''
@@ -85,9 +43,11 @@ class Comment(Base):
 class Person(Base):
     '''Stores info about a person'''
     first = db.StringProperty(required=False)
+    middle = db.StringProperty(required=False)
     last = db.StringProperty(required=True)
-    rank = db.StringProperty()
     title = db.StringProperty()
+    dob = db.DateProperty()
+    dod = db.DateProperty()
 
     def full_name(self):
         full_name = str()

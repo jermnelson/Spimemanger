@@ -9,7 +9,12 @@ ul {
   padding: 5px 5px 5px 5px;
   margin: 10px;}
   
-
+div.crud_toolbar {
+  border: thin solid rgb(0,0,0);
+  background-color: rgb(163,209,209);
+  padding: 5px 5px 5px 5px;}
+  
+  
 #left_sidebar{
   border: thin solid rgb(0,0,0);
   background-color: rgb(243,231,186);

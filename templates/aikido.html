@@ -7,11 +7,29 @@
 
 <div id="aikido_log">
 <h3>Aikido Log</h3>
+<div class="crud_toolbar">
+<a href="/aikido/logs/add">Add Log Entry</a>|<a href="/aikido/logs/delete">Delete a Log Entry</a>
+</div>
 <dl>
 {% for entry in aikido_log %}
-  <dt>{{ entry.class_datetime }} at {{ entry.dojo.name }}</dt>
+  <dt class="{% cycle odd,even %}">{{ entry.class_datetime }} at {{ entry.dojo.name }} <a href="log/edit?log_key={{ entry.key }}">Edit</a></dt>
   <dd>Instructors: {% for sensei in entry.get_instructors %}{{ sensei }}{% endfor %}</dd>
 {% endfor %}
 </dl>
 </div>
+
+<div id="aikido_dojos">
+<h3>Dojos Listing</h3>
+<div class="crud_toolbar">
+<a href="dojos/add">Add Dojo</a>|<a href="dojos/edit">Edit Dojo</a>|<a href="dojos/delete">Delete Dojo</a>
+</div>
+{% for dojo in dojos %}
+<p class="dojo_desc">{{ dojo.name }} current location {{ dojo.location }}</p>
+{% endfor %}
+</div>
+
+<p>
+Aikido <a href="3D/">3-D</a> sample.
+</p>
+
 {% endblock %}

@@ -246,3 +246,27 @@ class TechniqueSavePage(webapp.RequestHandler):
                             'templates/message.html')
         self.response.out.write(template.render(path,template_values))
 
+
+class Aikido3DMainPage(webapp.RequestHandler):
+
+    def get(self):
+        template_values = {
+            'message':'Aikido 3D Main Page'}
+        path = os.path.join(os.path.dirname(__file__),
+                            'templates/aikido3D_base.html')
+        self.response.out.write(template.render(path,template_values))
+
+class AikidoPrimitiveShapesPage(webapp.RequestHandler):
+
+    def get(self):
+        shape = self.request.get('shape')
+        if not shape:
+            raise RuntimeError("Page requires shape")
+        if shape == 'cube':
+            path = os.path.join(os.path.dirname(__file__),
+                                'templates/simple.html')
+            template_values = {
+                'shape':'cube'}
+        else:
+            raise RuntimeError("Unknown shape %s " % shape)
+        self.response.out.write(template.render(path,template_values))
