@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//WSC//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equv="content-type" content="text/html; charset=UTF-8">
+<title>{% block title %}Aikido Base 3D Template{% endblock %}</title>
+<link rel="stylesheet" href="/styles/default.css" />
+<script type="text/javascript" 
+   src="{% block o3djs_url %}o3djs/base.js{% endblock %}">
+</script>
+<script type="text/javascript">{% block aikido_3D_src %}{% endblock %}</script>
+</head>
+<body>
+<h2>{% block main_title %}Aikido 3-D Sample Page{% endblock %}</h2>
+{% block content %}
+<p>
+ The purpose of these Aikido 3-D pages is to explore new browser-based 3D technology such as 
+ Google's <a href="http://code.google.com/apis/o3d/">O3D</a> javascript plugin and Mozilla's
+ <a href="http://blog.vlad1.com/2009/03/28/canvas-3d-extension-update-2/">Canvas 3D</a> plug-in.
+</p>
+<p>
+ I have longed believed that web content and interfaces will move into interactive 3D environment.
+ This is site is to use these 3D technologies to build interfaces to better understand 3D web
+ development within a specific context of documenting and explaining Aikido techniques.
+</p>
+<h3>Google O3D Sample Files</h3>
+<ul>
+ <li><a href="primitives?shape=cube">Aikido Cube</a></li>
+</ul>
+{% endblock %}
+</body>
+</html>
